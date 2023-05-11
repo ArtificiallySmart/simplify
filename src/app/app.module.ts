@@ -4,7 +4,6 @@ import { HomeComponent } from './screens/home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from './shared/shared.module';
-import { SimplifyModule } from './simplify/simplify.module';
 
 export const routes: Routes = [
   {
