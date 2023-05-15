@@ -1,10 +1,9 @@
 <ion-content>
-  <ion-text *ngIf="result">
-    {{result | async | json}}
-  </ion-text>
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="takePicture()">
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+
+  <ng-container [ngSwitch]="step">
+
+    <app-capture *ngSwitchCase="1" (acceptImage)="imageCaptured($event)"></app-capture>
+    <app-crop *ngSwitchCase="2" [image]="uncroppedDocument!" (acceptCrop)="imageCropped($event)"
+      (stepBack)="stepBack()"></app-crop>
+  </ng-container>
 </ion-content>

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { SECRETS } from 'keys';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,10 @@ export class HttpService {
     }
   }
 
-  public post(payload: any) {
-    return this.http.post(this.API_URL!, payload, this.httpOptions);
+  public post<T>(payload: any): Observable<T> {
+    return this.http.post(
+      `${this.API_URL}?key=${this.API_KEY}`,
+      payload
+    ) as Observable<T>;
   }
 }

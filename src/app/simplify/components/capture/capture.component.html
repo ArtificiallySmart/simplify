@@ -1,0 +1,33 @@
+<ion-text>
+  <h1>
+    Take a picture
+  </h1>
+</ion-text>
+
+<ion-img *ngIf="selectedImage" [src]="selectedImage | b64img"></ion-img>
+
+<ng-container *ngIf="selectedImage; then acceptDeny; else captureImg">
+
+</ng-container>
+
+<ng-template #captureImg>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ng-template>
+
+<ng-template #acceptDeny>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="deleteImg()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="acceptImg()">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ng-template>
